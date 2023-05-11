@@ -109,16 +109,16 @@ def send_reminder():
             # Отправляем сообщение с кнопками
         bot.send_message(message.chat.id, "Вы готовы передать показания сейчас, или вы хотите дождаться удобного для этого времени? Напомню, что наиболее удобным временем для передачи и оплаты показаний счетчиков является каждое 20-е число месяца.", reply_markup=markup)
 
-
-# функция запуска бота
-def run_bot():
-    bot.polling(none_stop=True, interval=0)    
-    if __name__ == '__main__':
-
 # Регистрируем задачу на выполнение каждый день в полночь
         schedule.every().day.at("09:50").do(send_reminder)
 
 # Запускаем бесконечный цикл, который проверяет расписание и выполняет задачи
     while True:
         schedule.run_pending()
-        time.sleep(10000)   
+        time.sleep(10000)  
+
+
+# функция запуска бота
+def run_bot():
+    bot.polling(none_stop=True, interval=0)    
+    if __name__ == '__main__':
